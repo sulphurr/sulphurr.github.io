@@ -240,7 +240,80 @@ dialog[open]{display:flex;flex-direction:column}
 .music #ms{line-height:36px}
 .ph{height:clamp(200px,28vh,250px);padding:0;border:2px solid var(--li);overflow:hidden;background:var(--bk);display:block}
 .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:saturate(.9) contrast(1.02)}
-</style></head><body>
+
+/* ===== LITE (phones and touch tablets) ===== */
+html.lite,html.lite body{overscroll-behavior:none;-webkit-text-size-adjust:100%}
+html.lite .p{padding:88px 20px 120px}
+/* vertical page on phones: sections stack top to bottom */
+html.lite .stage.native{overflow-x:hidden;overflow-y:auto;scroll-snap-type:none;overscroll-behavior:none}
+html.lite .track{flex-direction:column;width:100%;height:auto}
+html.lite .p{flex:none;width:100%;height:auto;min-height:100vh;min-height:100svh;overflow-x:clip;overflow-y:visible;scroll-snap-align:none}
+/* no GPU-heavy effects */
+html.lite nav b,html.lite nav a,html.lite .music{backdrop-filter:none;-webkit-backdrop-filter:none}
+html.lite nav b{background:rgba(14,13,10,.82)}
+html.lite nav a{background:rgba(14,13,10,.82)}
+html.lite nav a[aria-current=true]{background:var(--li);color:var(--bk);border-color:var(--li)}
+html.lite .hero h1{font-size:min(21vw,40vh);max-width:100%}
+html.lite .music{background:rgba(14,13,10,.92);box-shadow:none}
+html.lite .gf:not(.hero):before{display:none}
+html.lite .tel svg{filter:none}
+html.lite .badge{animation:none;margin-top:0;transform:rotate(-2deg)}
+/* nav: swipeable pill row instead of hidden */
+html.lite nav{gap:8px;padding-left:12px;padding-right:12px}
+html.lite nav b{flex:none;font-size:18px}
+html.lite nav ul{display:flex!important;flex:1;min-width:0;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:2px 0;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+html.lite nav ul::-webkit-scrollbar{display:none}
+html.lite nav a{white-space:nowrap;padding:8px 14px;font-size:13px}
+/* about */
+html.lite .about{flex-direction:column;flex-wrap:nowrap;justify-content:safe center;align-items:center;gap:28px}
+html.lite .strap{height:84px;padding-top:0;font-size:11px}
+html.lite .abt{max-width:none}
+html.lite .abt h2{font-size:clamp(2.2rem,11vw,3.2rem)}
+/* projects: flat cards instead of the 3D bookshelf */
+html.lite .shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;width:100%;max-width:760px;padding:0;perspective:none;overflow:visible;justify-content:stretch;align-items:stretch;text-align:left}
+html.lite .shelf:after,html.lite .slot:before,html.lite .fl,html.lite .lay,html.lite .ball,html.lite .trophy,html.lite .shelf .sp{display:none!important}
+html.lite .slot{width:100%!important;height:auto!important;transition:none}
+html.lite .slot .bk{transform:none!important;width:100%!important;height:auto!important;transition:none;transform-style:flat}
+html.lite .shelf .cv{position:relative;top:auto;left:auto;width:100%;height:auto;min-height:128px;transform:none;backface-visibility:visible;border-radius:10px;padding:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35);gap:14px}
+html.lite .shelf .cv:before{display:none}
+html.lite .shelf .cv:after{opacity:.25}
+html.lite .cv strong{font-size:24px}
+html.lite .slot:active .cv{filter:brightness(.9)}
+html.lite .hit{border-radius:10px}
+html.lite dialog{width:min(560px,94vw);height:min(520px,82vh);height:min(520px,82dvh);padding:20px}
+html.lite dialog[open]{animation:none}
+html.lite .pn button{min-height:44px}
+/* stack */
+html.lite .grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;gap:10px}
+html.lite .t{height:auto;min-height:132px}
+html.lite .t:hover{transform:none}
+html.lite .cats button{padding:8px 14px;font-size:17px}
+/* resume */
+html.lite .res{justify-content:flex-start;align-content:flex-start}
+html.lite .side{max-width:none}
+html.lite .doc{transform:none;box-shadow:none;columns:1;width:100%}
+/* contact */
+html.lite .con{align-content:center}
+html.lite .con h2{font-size:clamp(2rem,10vw,3.2rem)}
+html.lite .con>div:first-child{flex:1 1 100%}
+html.lite .col{flex:1 1 100%;height:300px}
+html.lite #tcap{bottom:-28px}
+html.lite .music{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+
+.bl{margin:0;padding-left:1.15em;display:grid;gap:9px;font-size:14.5px;line-height:1.45}.bl li::marker{color:var(--c)}.bl b{font-weight:700}
+dialog{height:min(600px,90vh)}
+/* LITE project cards */
+html.lite .shelf{align-items:stretch}
+html.lite .slot{display:flex}
+html.lite .slot .bk{display:flex!important;flex:1}
+html.lite .shelf .cv{flex:1;min-height:132px;background:linear-gradient(145deg,var(--c2) 0,var(--c) 52%,var(--c3) 100%);color:var(--k);box-shadow:0 10px 24px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.45);border:0;overflow:hidden}
+html.lite .shelf .cv:after{content:'\2197';display:grid;place-items:center;position:absolute;inset:14px 14px auto auto;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.16);color:var(--k);font:600 17px/1 'Space Grotesk',sans-serif;opacity:1;mix-blend-mode:normal;filter:none;z-index:2}
+html.lite .cv>em{font-weight:600;letter-spacing:.14em;opacity:.8}
+html.lite .cv strong{display:block;font-size:23px;line-height:1.08;padding-right:6px}
+html.lite .cv span br{display:none}
+html.lite .cv span em{display:block;margin-top:8px;font-size:13px;line-height:1.4;opacity:.85}
+html.lite dialog{height:min(620px,86vh);height:min(620px,86dvh)}
+</style><script>(function(){var q=location.search,l=/[?&]lite/.test(q)||(!/[?&]full/.test(q)&&matchMedia('(max-width:899px),(pointer:coarse)').matches);document.documentElement.classList.toggle('lite',l)})()</script></head><body>
 <nav aria-label="Primary"><b>SULPHUR</b><ul id="nav"></ul></nav>
 <canvas id="gl" aria-hidden="true"></canvas>
 <main class="stage" id="stage"><div class="track" id="track">
@@ -327,16 +400,18 @@ dialog[open]{display:flex;flex-direction:column}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 const $=s=>document.querySelector(s),N=6,RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const LITE=document.documentElement.classList.contains('lite');let LR=-1,LT=0;
 const NAV=['Home','About','Projects','Stack','Resume','Contact'],IDS=['home','about','projects','stack','resume','contact'];
 /* Project details are based on the supplied resume. Only completed, resume-listed projects are featured. */
 const PROJECTS=[
- {title:'Multi-Layer Secure File Protection Framework',short:'Secure Vault',sub:'Layered file security with behavioural login',c:'#9C4F3A',c2:'#C98A6B',c3:'#6E3427',k:'#F6EBDD',status:'Completed',intro:'Secure Vault is a desktop file-security system that layers AES-256 encryption, keystroke-dynamics authentication, LSB steganography, IPFS storage, a local blockchain integrity ledger and a honeytrap decoy vault.',problem:'Password-only or encryption-only vaults fall short once credentials leak or the vault file is found. The framework spreads protection across independent layers so one compromise does not expose the files.',impl:'Keystroke-dynamics login uses Isolation Forest, One-Class SVM and K-Means on a 40-dimension timing feature vector. Files are encrypted locally, can be hidden in RGB images with LSB steganography, camouflaged on disk and uploaded to IPFS. A hash-linked local ledger flags tampering and a decoy vault logs intruder access. In 112+ simulated attack tests, the keystroke-dynamics layer cut unauthorized access success by over 95%, and the paper I first-authored reports 93.75% overall authentication accuracy over 112 attempts. I led the 4-person team through a 6-month Agile cycle.',tech:['Python','AES-256','scikit-learn','Isolation Forest','One-Class SVM','LSB steganography','IPFS','SHA-256 ledger','Tkinter'],github:'https://github.com/sulphurr/Secure-Vault'},
- {title:'AI-Powered Campus Navigation System',short:'Campus NavApp',sub:'RAG assistant for campus queries',c:'#6E7A32',c2:'#9AA55A',c3:'#454E1C',k:'#F6EBDD',status:'Completed',intro:'A campus assistant that answers location, faculty and department queries. MySQL serves structured faculty data, retrieval-augmented generation handles room and location details, and Gemini handles general conversation.',problem:'Students need a practical way to find campus locations, faculty locations, staffrooms, faculty details and department information through natural-language questions.',impl:'Web-based assistant with a FastAPI and Uvicorn backend. Faculty locations, staffrooms, schedules and details are retrieved from MySQL, with NLP extracting query attributes for the structured lookups. Room and location details come from a RAG pipeline that runs from ChromaDB vector indexing, using Gemini embeddings through LangChain, to Gemini API response generation. Smalltalk and general conversation are handled by Gemini directly. Optimized chunk retrieval, prompt refinement and 4 testing cycles improved answer accuracy by 90% over the initial evaluation baseline.',tech:['Python','FastAPI','Uvicorn','MySQL','Gemini API','LangChain','RAG','ChromaDB','NLP','HTML','CSS','JavaScript'],github:'https://github.com/sulphurr/collegebot'},
- {title:'Lucent: Kanban Task Manager',short:'Lucent',sub:'A simple React task board',c:'#C9A27E',c2:'#E3C9A9',c3:'#A27F5C',k:'#2A2008',status:'Completed',intro:'A Kanban-style task manager with To Do, Doing and Done columns.',problem:'A lightweight task board needs clear task states and simple controls to add, move and remove work items.',impl:'React and Vite interface where users add, move and delete tasks. Task state is managed with useState, columns and cards render dynamically with map and filter, and forms use controlled inputs and click handlers. Responsive layout.',tech:['React','Vite','JavaScript','HTML','CSS'],github:'https://github.com/sulphurr/kanban'},
- {title:'Credit Card Fraud Risk Analysis',short:'Fraud Analysis',sub:'SQL, ML and a Power BI dashboard',c:'#4A4A1A',c2:'#6B6B2E',c3:'#2B2B0E',k:'#E9E4B8',status:'Completed',intro:'An end-to-end analysis of 100,000 credit card transactions to see what separates fraudulent from legitimate activity, with a logistic regression model and a Power BI dashboard.',problem:'Fraud is only 0.6% of the data (598 of 100,000 transactions), so this is a highly imbalanced classification problem.',impl:'Cleaned the data and engineered hour, day and month features, answered fraud-rate questions in SQLite, and explored patterns visually. Trained a logistic regression on amount, hour, payment method and transaction type using one-hot encoding, a stratified split and balanced class weights. Fraud peaks around 10 to 11 PM at roughly 3%, and fraudulent transactions average 541.56 against 67.26. The model reaches 95.06% accuracy and 82% fraud recall at 9% precision.',tech:['Python','Pandas','SQL (SQLite)','Matplotlib','scikit-learn','Power BI','Jupyter Notebook'],github:'https://github.com/sulphurr/Credit-Card-Fraud-Risk-Analysis-and-Fraud-Prediction'},
- {title:'CAN Bus Visualizer',short:'CAN Bus',sub:'Simulated vehicle telemetry dashboard',c:'#B8704A',c2:'#D99B78',c3:'#8A4E31',k:'#F6EBDD',status:'Completed',intro:'An interactive simulator that mimics real-time data streaming over a vehicle CAN bus, with a Tkinter dashboard and a live Matplotlib plot.',problem:'The CAN bus is how a vehicle controllers exchange data. The project turns that traffic into visible metrics as a hands-on way to learn automotive telemetry.',impl:'Simulates engine RPM, vehicle speed, engine temperature, gear shifts and driving modes (idle, acceleration, braking, stop). Includes a real-time RPM-versus-time plot, a warning when temperature passes a safety threshold, Accelerate, Brake and Stop controls, a custom ECU logic simulator and multi-threading to keep the UI responsive.',tech:['Python','Tkinter','Matplotlib','threading'],github:'https://github.com/sulphurr/can_bus_visualizer'},
- {title:'Password Strength Analyzer',short:'Password Analyzer',sub:'Entropy scoring and breach checks',c:'#D6C3A0',c2:'#EADDBF',c3:'#B5A07A',k:'#2A2008',status:'Completed',intro:'A Python desktop app that rates password strength, checks breach exposure through the Have I Been Pwned API and suggests improvements.',problem:'People need a quick way to see whether a password is weak or already exposed in known breaches, without sending the full password anywhere.',impl:'Entropy-based rating into Weak, Moderate or Strong, breach checks using the k-anonymity method (only the first 5 characters of the SHA-1 hash are sent), practical suggestions on length and character variety, and a Tkinter interface.',tech:['Python','Tkinter','requests','SHA-1','Have I Been Pwned API'],github:'https://github.com/sulphurr/password_strength_analyzer'}
+ {title:'Multi-Layer Secure File Protection Framework',short:'Secure Vault',sub:'Layered file security with behavioural login',c:'#9C4F3A',c2:'#C98A6B',c3:'#6E3427',k:'#F6EBDD',status:'Completed',intro:"A multi-layer file security system that combines encryption, steganography, behavioral authentication, and decentralized storage to protect sensitive files from unauthorized access.",problem:"Sensitive files are vulnerable to unauthorized access, data theft, and exposure when protected by a single security mechanism.",objective:"To develop a comprehensive file protection framework that combines multiple security layers to ensure confidentiality, authentication, and data integrity.",features:["Encrypts files using AES-256 to protect sensitive data.", "Conceals encrypted files within images using LSB steganography.", "Uses keystroke dynamics to authenticate users based on typing behavior.", "Applies Isolation Forest and One-Class SVM to detect abnormal typing patterns.", "Uses K-means clustering to group data based on similar characteristics.", "Integrates IPFS for decentralized file storage and SHA-256 hashing for integrity verification."],tech:["Python", "AES-256", "scikit-learn", "Isolation Forest", "One-Class SVM", "K-means Clustering", "LSB Steganography", "IPFS", "SHA-256 Ledger", "Tkinter"],github:'https://github.com/sulphurr/Secure-Vault'},
+ {title:'AI-Powered Campus Navigation System',short:'Campus NavApp',sub:'RAG assistant for campus queries',c:'#6E7A32',c2:'#9AA55A',c3:'#454E1C',k:'#F6EBDD',status:'Completed',intro:"An AI-powered campus assistant that helps students and visitors locate classrooms, find faculty information, and access timetable details through natural language queries.",problem:"Students often have difficulty locating campus facilities, finding faculty members, and accessing timetable information scattered across different sources.",objective:"To develop a centralized conversational assistant that retrieves campus location information from a knowledge base and provides faculty details and timetables from SQL databases through natural language queries.",features:["Helps users locate classrooms, laboratories, departments, and other campus facilities.", "Retrieves faculty information from structured MySQL databases.", "Provides timetable information to help users access class schedules.", "Uses RAG to retrieve relevant campus information and generate contextual responses.", "Combines semantic search with SQL queries to handle different types of campus questions."],tech:["Python", "FastAPI", "Uvicorn", "MySQL", "Gemini API", "LangChain", "RAG", "ChromaDB", "NLP", "HTML", "CSS", "JavaScript"],github:'https://github.com/sulphurr/collegebot'},
+ {title:'Lucent: Kanban Task Manager',short:'Lucent',sub:'A simple React task board',c:'#C9A27E',c2:'#E3C9A9',c3:'#A27F5C',k:'#2A2008',status:'Completed',intro:"A lightweight Kanban task management application that helps users organize tasks and track their progress through a visual workflow.",problem:"Managing tasks without a structured workflow can make it difficult to organize activities and monitor progress.",objective:"To develop a simple, responsive task management application that allows users to organize tasks and track their progress across different workflow stages.",features:["Organizes tasks into To Do, Doing, and Done columns.", "Allows users to create, move, and delete tasks.", "Dynamically renders task cards based on application state.", "Uses React state management to update task progress interactively.", "Provides a responsive interface for simple task organization."],tech:["React", "Vite", "JavaScript", "HTML", "CSS"],github:'https://github.com/sulphurr/kanban'},
+ {title:'Credit Card Fraud Risk Analysis',short:'Fraud Analysis',sub:'SQL, ML and a Power BI dashboard',c:'#4A4A1A',c2:'#6B6B2E',c3:'#2B2B0E',k:'#E9E4B8',status:'Completed',intro:"A machine learning project that analyzes credit card transaction patterns and predicts potentially fraudulent transactions using historical financial data.",problem:"Fraudulent transactions are difficult to identify because they represent a small proportion of transactions and may exhibit complex behavioral patterns.",objective:"To analyze transaction data, identify patterns associated with fraud, and develop a predictive model to distinguish fraudulent transactions from legitimate ones.",features:["Performs exploratory data analysis to identify transaction patterns and fraud-related characteristics.", "Analyzes transaction amounts and time-based trends.", "Creates features such as transaction hour, day, and month.", "Applies stratified sampling and class balancing to address imbalanced data.", "Trains a Logistic Regression model to predict fraudulent transactions.", "Visualizes transaction patterns and model evaluation results."],tech:["Python", "Pandas", "SQL (SQLite)", "Matplotlib", "scikit-learn", "Power BI", "Jupyter Notebook"],github:'https://github.com/sulphurr/Credit-Card-Fraud-Risk-Analysis-and-Fraud-Prediction'},
+ {title:'CAN Bus Visualizer',short:'CAN Bus',sub:'Simulated vehicle telemetry dashboard',c:'#B8704A',c2:'#D99B78',c3:'#8A4E31',k:'#F6EBDD',status:'Completed',intro:"A desktop application that simulates and visualizes Controller Area Network (CAN) communication data through an interactive graphical interface.",problem:"Raw CAN Bus communication data can be difficult to interpret, making it challenging to understand message patterns and signal behavior.",objective:"To develop a visualization tool that simplifies the exploration of simulated CAN Bus communication through graphical representations.",features:["Simulates CAN Bus communication data for visualization.", "Displays communication signals through graphical plots.", "Provides an interactive Tkinter desktop interface.", "Uses threading to support responsive application execution.", "Visualizes simulated data to help users understand CAN communication patterns."],tech:["Python", "Tkinter", "Matplotlib", "threading"],github:'https://github.com/sulphurr/can_bus_visualizer'},
+ {title:'Password Strength Analyzer',short:'Password Analyzer',sub:'Entropy scoring and breach checks',c:'#D6C3A0',c2:'#EADDBF',c3:'#B5A07A',k:'#2A2008',status:'Completed',intro:"A Python-based desktop application that evaluates password strength, checks for known data breaches, and provides recommendations to improve password security.",problem:"Users may create weak passwords without knowing their strength or whether their credentials have been exposed in data breaches.",objective:"To develop a password analysis tool that estimates password strength, checks breach exposure, and encourages stronger password practices.",features:["Calculates password entropy based on password length and character diversity.", "Classifies passwords as weak, moderate, or strong.", "Checks passwords against the Have I Been Pwned database using the k-anonymity model, transmitting only the first five characters of the SHA-1 hash.", "Displays the number of known breach occurrences for exposed passwords.", "Suggests improvements to password length and character complexity.", "Provides a Tkinter interface with password masking and color-coded results."],tech:["Python", "Tkinter", "Requests", "SHA-1", "Have I Been Pwned API"],github:'https://github.com/sulphurr/password_strength_analyzer'}
 ];
+if(LITE){[{"c": "#E4483B", "c2": "#FF7A5C", "c3": "#B02A2E", "k": "#FFF4E8"}, {"c": "#C8EA1E", "c2": "#E2F86A", "c3": "#8FBA12", "k": "#1E2306"}, {"c": "#F6B77A", "c2": "#FFD9A8", "c3": "#E58F4C", "k": "#2A1706"}, {"c": "#2E9A63", "c2": "#52C98A", "c3": "#17603E", "k": "#F0FFE8"}, {"c": "#FF8A3D", "c2": "#FFB066", "c3": "#D4561A", "k": "#2A1000"}, {"c": "#F2A7C3", "c2": "#FFD0E1", "c3": "#D9739C", "k": "#3A0E22"}].forEach((q,i)=>Object.assign(PROJECTS[i],q))}
 const TECH={
  'Languages':[['Python','Used for backend services, automation and machine-learning projects'],['Java','Programming language and OOP fundamentals'],['JavaScript','Interactive frontend application logic'],['C','Programming fundamentals'],['PHP','Backend and web development fundamentals'],['SQL','Relational data querying']],
  'Frontend':[['JavaScript','Interactive frontend logic and DOM scripting'],['React.js','Component-based user interfaces'],['HTML5','Semantic web page structure'],['CSS3','Responsive layouts and visual styling'],],
@@ -344,31 +419,35 @@ const TECH={
  'AI / ML':[['LangChain','Retrieval pipeline orchestration'],['Google Gemini API','LLM-powered response generation'],['ChromaDB','Vector indexing and retrieval'],['scikit-learn','Classical machine-learning models']],
  'Tools & Concepts':[['Git & GitHub','Version control and collaboration'],['Docker','Containerization'],['Bash','Command-line scripting'],['Linux','Development environment'],['Agile & SDLC','Iterative software delivery'],['OOP & DSA','Core software engineering concepts']]
 };
+if(LITE){const a=document.querySelector('#projects>p'),b=document.querySelector('.hero small');if(a)a.textContent='Tap a project to read it.';if(b)b.innerHTML='Scroll &darr;'}
 /* nav */
 $('#nav').innerHTML=NAV.map((n,i)=>`<li><a href="#${IDS[i]}" data-i="${i}">${n}</a></li>`).join('');
 let P=0,ST=null;const stage=$('#stage');
-function go(i){if(stage.classList.contains('native'))stage.scrollTo({left:i*innerWidth,behavior:RM?'auto':'smooth'});else if(ST)scrollTo({top:ST.start+(ST.end-ST.start)*i/(N-1),behavior:RM?'auto':'smooth'})}
+function secTop(i){return document.getElementById(IDS[i]).getBoundingClientRect().top-stage.getBoundingClientRect().top+stage.scrollTop}
+function vp(){const st=stage.scrollTop,t=IDS.map((_,i)=>secTop(i));let i=0;while(i<N-1&&st>=t[i+1]-1)i++;return i>=N-1?N-1:i+(st-t[i])/(t[i+1]-t[i])}
+function go(i){if(stage.classList.contains('native'))stage.scrollTo(LITE?{top:secTop(i),behavior:RM?'auto':'smooth'}:{left:i*innerWidth,behavior:RM?'auto':'smooth'});else if(ST)scrollTo({top:ST.start+(ST.end-ST.start)*i/(N-1),behavior:RM?'auto':'smooth'})}
 $('#nav').onclick=e=>{const a=e.target.closest('a');if(a){e.preventDefault();go(+a.dataset.i)}};
-function setP(p){P=p;window.phoneCheck&&phoneCheck(p);$('#bar').style.width=(p/(N-1)*100)+'%';const r=Math.round(p);document.querySelectorAll('#nav a').forEach(a=>a.setAttribute('aria-current',+a.dataset.i===r))}
+function setP(p){P=p;window.phoneCheck&&phoneCheck(p);$('#bar').style.width=(p/(N-1)*100)+'%';const r=Math.round(p);document.querySelectorAll('#nav a').forEach(a=>a.setAttribute('aria-current',+a.dataset.i===r));
+ if(LITE&&r!==LR){LR=r;const a=document.querySelector('#nav a[data-i="'+r+'"]'),u=$('#nav');if(a)u.scrollTo({left:a.getBoundingClientRect().left-u.getBoundingClientRect().left+u.scrollLeft-(u.clientWidth-a.offsetWidth)/2,behavior:'smooth'})}}
 
 /* horizontal scroll */
 gsap.registerPlugin(ScrollTrigger);
 const mm=gsap.matchMedia(),track=$('#track');
-mm.add('(min-width:900px) and (prefers-reduced-motion:no-preference)',()=>{
+mm.add(LITE?'(max-width:0px)':'(min-width:900px) and (prefers-reduced-motion:no-preference)',()=>{
  const dist=()=>track.scrollWidth-innerWidth;
  const t=gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:stage,start:'top top',end:()=>'+='+dist(),pin:true,scrub:.6,invalidateOnRefresh:true,onUpdate:s=>setP(s.progress*(N-1))}});
  ST=t.scrollTrigger;return()=>{ST=null}});
-mm.add('(max-width:899px), (prefers-reduced-motion:reduce)',()=>{
- stage.classList.add('native');const f=()=>setP(stage.scrollLeft/innerWidth);stage.addEventListener('scroll',f,{passive:true});
+mm.add(LITE?'(min-width:0px)':'(max-width:899px), (prefers-reduced-motion:reduce)',()=>{
+ stage.classList.add('native');const f=()=>setP(LITE?vp():stage.scrollLeft/innerWidth);stage.addEventListener('scroll',f,{passive:true});
  return()=>{stage.classList.remove('native');stage.removeEventListener('scroll',f)}});
 if(!RM)gsap.from('.hero h1',{yPercent:30,opacity:0,duration:1,ease:'power3.out'});
 
 /* 3D hero cube: frosted glass tiles that slide off-screen with the page */
 (function(){try{
- const cv=$('#gl'),r=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,1.75));
+ const cv=$('#gl'),r=new THREE.WebGLRenderer({canvas:cv,antialias:!LITE,alpha:true,powerPreference:LITE?'low-power':'default'});r.setPixelRatio(Math.min(devicePixelRatio,LITE?1.5:1.75));cv.addEventListener('webglcontextlost',e=>{e.preventDefault();cv.remove()});
  const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,50);cam.position.z=10;
  const cl=(v,a,b)=>Math.min(Math.max(v,a),b);
- const SEG=10,S=.94,R=.17,I=S/2-R,bg=new THREE.BoxGeometry(S,S,S,SEG,SEG,SEG),bp=bg.attributes.position,bn=bg.attributes.normal,v=new THREE.Vector3(),c=new THREE.Vector3();
+ const SEG=LITE?6:10,S=.94,R=.17,I=S/2-R,bg=new THREE.BoxGeometry(S,S,S,SEG,SEG,SEG),bp=bg.attributes.position,bn=bg.attributes.normal,v=new THREE.Vector3(),c=new THREE.Vector3();
  for(let i=0;i<bp.count;i++){v.fromBufferAttribute(bp,i);['x','y','z'].forEach(k=>{const u=Math.abs(v[k])/(S/2);v[k]=Math.sign(v[k])*(S/2)*(1-(1-u)*(1-u))});
   c.set(cl(v.x,-I,I),cl(v.y,-I,I),cl(v.z,-I,I));v.sub(c).normalize();bp.setXYZ(i,c.x+v.x*R,c.y+v.y*R,c.z+v.z*R);bn.setXYZ(i,v.x,v.y,v.z)}
  const ST=[[0,[244,249,242]],[.22,[214,236,206]],[.42,[150,205,110]],[.58,[72,150,48]],[.74,[98,200,60]],[.9,[160,220,60]],[1,[224,236,72]]];
@@ -376,9 +455,9 @@ if(!RM)gsap.from('.hero h1',{yPercent:30,opacity:0,duration:1,ease:'power3.out'}
  const H=new THREE.Vector3(.5,-.5,1.5),mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,
   vertexShader:'attribute vec3 col;attribute float alp;varying vec3 vC,vN,vV;varying float vA,vE;void main(){vC=col;vA=alp;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vV=-mv.xyz;vE=1.-max(max(abs(normal.x),abs(normal.y)),abs(normal.z));gl_Position=projectionMatrix*mv;}',
   fragmentShader:'varying vec3 vC,vN,vV;varying float vA,vE;void main(){vec3 N=normalize(vN),V=normalize(vV),L=normalize(vec3(-.45,.7,.55));float f=pow(1.-max(dot(N,V),0.),2.2),ed=smoothstep(0.,.3,vE);vec3 c=mix(vC*.93,vec3(1.),ed*.5+f*.28);float sp=pow(max(dot(reflect(-L,N),V),0.),38.),sh=smoothstep(.2,1.,dot(N,normalize(vec3(-.5,.6,.6))))*.16;c+=sp*.55+sh;c*=1.-.16*smoothstep(0.,-1.,N.y);gl_FragColor=vec4(c,clamp(vA+f*.15+ed*.1,0.,.96));}'});
- const ps=[],q=new THREE.Quaternion(),qs=new THREE.Quaternion(),eu=new THREE.Euler(),NN=4,rnd=(a,b)=>a+Math.random()*(b-a),sm=(a,b,x)=>{x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)},WARM=[.94,.69,.5],sg=()=>Math.random()<.5?-1:1;
+ const ps=[],q=new THREE.Quaternion(),qs=new THREE.Quaternion(),eu=new THREE.Euler(),NN=LITE?3:4,rnd=(a,b)=>a+Math.random()*(b-a),sm=(a,b,x)=>{x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)},WARM=[.94,.69,.5],sg=()=>Math.random()<.5?-1:1;
  for(let x=0;x<NN;x++)for(let y=0;y<NN;y++)for(let z=0;z<NN;z++){
-  const b=new THREE.Vector3(x-1.5,y-1.5,z-1.5).multiplyScalar(1.04),g=bg.clone(),P0=g.attributes.position,col=new Float32Array(P0.count*3),al=new Float32Array(P0.count);
+  const b=new THREE.Vector3(x-(NN-1)/2,y-(NN-1)/2,z-(NN-1)/2).multiplyScalar(1.04),g=bg.clone(),P0=g.attributes.position,col=new Float32Array(P0.count*3),al=new Float32Array(P0.count);
   for(let i=0;i<P0.count;i++){const px=b.x+P0.getX(i),py=b.y+P0.getY(i),pz=b.z+P0.getZ(i);let e=1.1-.55*Math.hypot(px-H.x,py-H.y,pz-H.z)+.06*Math.sin(px*2.3+py*1.7)*Math.cos(pz*2);e=cl(e,0,1);const wv=sm(.1,1,-px*.5+py*.4-pz*.1+.3)*.6,k=ramp(e);col.set(k,i*3);al[i]=.55+.38*e}
   g.setAttribute('col',new THREE.BufferAttribute(col,3));g.setAttribute('alp',new THREE.BufferAttribute(al,1));
   const m=new THREE.Mesh(g,mat);sc.add(m);const rr=Math.random(),d=Math.hypot(b.x-H.x,b.y-H.y,b.z-H.z);
@@ -388,9 +467,9 @@ if(!RM)gsap.from('.hero h1',{yPercent:30,opacity:0,duration:1,ease:'power3.out'}
  const outer=ps.filter(o=>o.b.length()>1.5).sort(()=>Math.random()-.5);outer[0].rem=[.4,-.3];outer[1].rem=[-.4,.24];outer.slice(0,2).forEach(o=>{o.vx=.3;o.vy=.2;o.pf=0});
  const ptr={x:0,y:0,tx:0,ty:0};
  addEventListener('pointermove',e=>{ptr.tx=e.clientX/innerWidth-.5;ptr.ty=e.clientY/innerHeight-.5});
- let SC=.42;function rs(){r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();SC=innerWidth<700?.32:.46}rs();addEventListener('resize',rs);
+ let SC=.42;function rs(){r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();SC=LITE?(innerWidth<700?.4:.5):.46}rs();addEventListener('resize',rs);
  const pos=new THREE.Vector3();
- (function loop(t){requestAnimationFrame(loop);const vis=P<2.3;cv.style.display=vis?'block':'none';if(!vis||document.hidden)return;
+ (function loop(t){requestAnimationFrame(loop);if(LITE&&t-LT<32)return;LT=t;const vis=P<2.3;cv.style.display=vis?'block':'none';if(!vis||document.hidden)return;
   const vH=2*Math.tan(cam.fov*Math.PI/360)*cam.position.z,vW=vH*cam.aspect,T0=RM?0:t*.0004,mob=cam.aspect<1,Cx=0,Cy=.05*vH;ptr.x+=(ptr.tx-ptr.x)*.06;ptr.y+=(ptr.ty-ptr.y)*.06;
   q.setFromEuler(eu.set(.42+ptr.y*.35+Math.sin(T0*.7)*.12+Math.min(P,1)*.4,Math.sin(T0)*.35+ptr.x*.6+Math.min(P,1)*.7,0));
   ps.forEach(o=>{const T=Math.max(0,P-o.s)*o.sp,spread=1+cl(T,0,1)*.18;
@@ -412,10 +491,10 @@ shelf.insertAdjacentHTML('afterbegin',[['#7a6a4c',.75,240],['#a38a68',.6,282]].m
 shelf.querySelector('.trophy').insertAdjacentHTML('beforebegin',[['#5e6a34',.7,262],['#c2a77f',.85,236],['#8a5a44',.6,278]].map(FL).join(''));
 const fit=()=>shelf.style.setProperty('--s',Math.min(Math.max(innerHeight/830,.7),1.3));fit();addEventListener('resize',fit);
 shelf.onclick=e=>{const h=e.target.closest('.hit');if(!h)return;const s=h.parentNode;
- if(!matchMedia('(hover:hover)').matches&&!s.classList.contains('on')){[...shelf.querySelectorAll('.slot')].forEach(x=>x.classList.remove('on'));s.classList.add('on');return}openBook(+s.dataset.i)};
+ if(!LITE&&!matchMedia('(hover:hover)').matches&&!s.classList.contains('on')){[...shelf.querySelectorAll('.slot')].forEach(x=>x.classList.remove('on'));s.classList.add('on');return}openBook(+s.dataset.i)};
 const dlg=$('#dlg');let cur,pg=0;
 function pages(p){const L=(u,n)=>u?`<a class="btn" href="${u}" target="_blank" rel="noopener">${n} &#8599;</a>`:`<span>${n} not publicly linked</span>`;
- return[['Introduction',`<p class="st">Status: ${p.status}</p><p>${p.intro}</p>`],['Problem and objective',`<p>${p.problem}</p>`],['Key features',`<p>${p.impl}</p>`],['Technologies','<ul class="tags">'+p.tech.map(t=>`<li>${t}</li>`).join('')+'</ul>'],['Links',L(p.github,p.gl||'View on GitHub')]]}
+ return[['Introduction',`<p class="st">Status: ${p.status}</p><p>${p.intro}</p>`],['Problem &amp; Objective',`<ul class="bl"><li><b>Problem:</b> ${p.problem}</li><li><b>Objective:</b> ${p.objective}</li></ul>`],['Key Features','<ul class="bl">'+p.features.map(f=>`<li>${f}</li>`).join('')+'</ul>'],['Technologies','<ul class="tags">'+p.tech.map(t=>`<li>${t}</li>`).join('')+'</ul>'],['Links',L(p.github,p.gl||'View on GitHub')]]}
 function openBook(i){cur=PROJECTS[i];pg=0;dlg.style.setProperty('--c',cur.c);drawBook();dlg.showModal()}
 function drawBook(){const q=pages(cur)[pg];$('#dt').textContent=cur.title;$('#pg').innerHTML=`<small>Page ${pg+1} of 5</small><h3>${q[0]}</h3>${q[1]}`;$('#pv').disabled=!pg;$('#nx').disabled=pg===4}
 $('#pv').onclick=()=>{pg--;drawBook()};$('#nx').onclick=()=>{pg++;drawBook()};$('#cl').onclick=()=>dlg.close();
